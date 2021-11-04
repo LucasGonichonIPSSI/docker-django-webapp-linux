@@ -1,5 +1,4 @@
-[![.github/workflows/anchor.yml](https://github.com/LucasGonichonIPSSI/docker-django-webapp-linux/actions/workflows/anchor.yml/badge.svg?branch=master)](https://github.com/LucasGonichonIPSSI/docker-django-webapp-linux/actions/workflows/anchor.yml)
-
+[![Container Image CI](https://github.com/LucasGonichonIPSSI/docker-django-webapp-linux/actions/workflows/anchor.yml/badge.svg?branch=master)](https://github.com/LucasGonichonIPSSI/docker-django-webapp-linux/actions/workflows/anchor.yml)
 # Django starter app for Web App on Linux
 
 A simple Python Django application running in a Docker container. The custom image uses port 8000. 
