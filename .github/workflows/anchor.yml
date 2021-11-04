@@ -5,24 +5,24 @@ on:
   pull_request:
     branches: [ master ]
 jobs:
-  build:
+  security:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - name: Build the Container image
-        run: docker build . --file Dockerfile --tag localbuild/testimage:latest
-      - uses: anchore/scan-action@v3
-        id: scan
-        with:
-          image: "localbuild/testimage:latest"
-          acs-report-enable: true
-          debug: true
-          fail-build: false
-          severity-cutoff: high
-      - name: upload Anchore scan SARIF report
-        uses: github/codeql-action/upload-sarif@v1
-        with:
-          sarif_file: ${{ steps.scan.outputs.sarif }}
-      - name: Inspect action SARIF report
-        run: cat ${{ steps.scan.outputs.sarif }}
+    - uses: actions/checkout@v2
+    - name: Build the Container image
+      run: docker build . --file Dockerfile --tag localbuild/testimage:latest
+    - uses: anchore/scan-action@v3
+      id: scan
+      with:
+        image: "localbuild/testimage:latest"
+        acs-report-enable: true
+        debug: true
+        fail-build: false
+        severity-cutoff: high
+    - name: upload Anchore scan SARIF report
+      uses: github/codeql-action/upload-sarif@v1
+      with:
+        sarif_file: ${{ steps.scan.outputs.sarif }}
+    - name: Inspect action SARIF report
+      run: cat ${{ steps.scan.outputs.sarif }}
 
